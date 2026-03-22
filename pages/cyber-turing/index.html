@@ -438,10 +438,12 @@
 <body
     class="text-gray-300 font-sans h-screen flex flex-col overflow-hidden selection:bg-brand-accent selection:text-brand-bg transition-colors duration-500">
 
-    <a href="../../index.html"
-        class="fixed left-4 top-4 z-[120] rounded border border-white/20 bg-black/45 px-3 py-1.5 text-sm text-white/90 backdrop-blur transition hover:bg-black/60">
-        返回
-    </a>
+    <div class="group fixed left-2 top-2 z-[120] h-12 w-12">
+        <a href="../../index.html"
+            class="pointer-events-none absolute left-0 top-0 rounded-md border border-white/15 bg-black/40 px-2 py-1 text-[11px] text-white/85 opacity-0 backdrop-blur transition duration-200 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100 focus:pointer-events-auto focus:opacity-100 hover:bg-black/55">
+            返回
+        </a>
+    </div>
 
     <!-- Toast 容器 -->
     <div id="toast-container"></div>
