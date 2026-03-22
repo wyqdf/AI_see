@@ -4,99 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI See | AI 可视化网页展示器</title>
-    <meta name="description" content="一个用于展示 AI 可视化单页项目的 GitHub Pages 导航站，支持后续持续扩展。">
+    <title>AI See</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/site.css">
 </head>
 
 <body>
-    <div class="page-shell">
-        <header class="hero">
-            <div class="hero-copy">
-                <p class="eyebrow">AI VISUAL LAB / GITHUB PAGES READY</p>
-                <h1>把单 HTML 页面整理成一个可以继续长出来的展示站。</h1>
-                <p class="hero-text">
-                    这个首页负责导航、预览和项目说明。后面你继续增加小页面时，只需要把新页面放进
-                    <code>pages/</code>，再在 <code>data/projects.js</code> 里补一条配置即可。
-                </p>
-                <div class="hero-actions">
-                    <a class="btn btn-primary" href="#project-grid">浏览页面</a>
-                    <a class="btn btn-secondary" href="https://github.com/wyqdf/AI_see" target="_blank"
-                        rel="noreferrer">打开 GitHub 仓库</a>
-                </div>
-            </div>
-
-            <aside class="hero-panel">
-                <div class="metric-card">
-                    <span class="metric-label">已收录页面</span>
-                    <strong id="metric-total">0</strong>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-label">可直接预览</span>
-                    <strong id="metric-ready">0</strong>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-label">预留扩展位</span>
-                    <strong id="metric-future">0</strong>
-                </div>
-                <div class="metric-note">
-                    GitHub Pages 静态托管友好，无需构建流程，推送后即可发布。
-                </div>
-            </aside>
-        </header>
-
-        <main class="workspace">
-            <section class="catalog">
-                <div class="section-head">
-                    <div>
-                        <p class="section-kicker">SHOWCASE NAV</p>
-                        <h2>页面导航</h2>
-                    </div>
-                    <p class="section-text">点击卡片切换右侧预览。卡片链接和描述全部由配置生成，方便后续继续扩展。</p>
-                </div>
-                <div id="project-grid" class="project-grid"></div>
-            </section>
-
-            <section class="viewer">
-                <div class="viewer-head">
-                    <div>
-                        <p class="section-kicker">LIVE PREVIEW</p>
-                        <h2 id="detail-title">选择一个页面</h2>
-                    </div>
-                    <a id="detail-link" class="btn btn-tertiary" href="#" target="_blank" rel="noreferrer">打开页面</a>
-                </div>
-
-                <div class="viewer-frame">
-                    <iframe id="preview-frame" title="页面预览" loading="lazy"></iframe>
-                    <div id="preview-empty" class="preview-empty" hidden>
-                        <p>这个位置保留给你未来的新页面。</p>
-                        <span>新增页面后，导航会自动把它显示在这里。</span>
-                    </div>
-                </div>
-
-                <article id="project-detail" class="project-detail"></article>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <div class="footer-card">
-                <p class="section-kicker">HOW TO ADD MORE</p>
-                <h3>以后继续加页面</h3>
-                <p>新建 <code>pages/你的页面/index.html</code>，然后在 <code>data/projects.js</code> 里补一条项目对象。</p>
-            </div>
-            <div class="footer-card">
-                <p class="section-kicker">GITHUB PAGES</p>
-                <h3>发布方式</h3>
-                <p>推送到仓库后，在 GitHub 的 <code>Settings → Pages</code> 里选 <code>Deploy from a branch</code>，分支选
-                    <code>main</code>，目录选 <code>/(root)</code>。</p>
-            </div>
-        </footer>
-    </div>
+    <main class="container">
+        <h1>作品</h1>
+        <nav>
+            <ul id="project-list" class="project-list"></ul>
+        </nav>
+    </main>
 
     <script src="data/projects.js"></script>
     <script src="assets/site.js"></script>
