@@ -6,5 +6,9 @@ window.AI_SHOWCASE_PROJECTS = [
     {
         title: "图灵机模拟器 - 湖南大学学术版",
         path: "pages/hnu-turing/index.html"
+    },
+    {
+        title: "移位相加乘法器",
+        path: "pages/shift-add-multiplier/index.html"
     }
 ];
