@@ -12,11 +12,24 @@
 .cell.part-q{fill:#f3eaff;stroke:#8853bf}.cell.part-q.bitHot{fill:#ddc2fa;stroke-width:3}
 svg .tone-c{fill:#b52b50}svg .tone-a{fill:#1268a6}svg .tone-l{fill:#16764f}svg .tone-q{fill:#7740ad}svg .tone-m{fill:#a95c04}
 .legend .key{display:inline-block;margin-right:14px;font-weight:600}.legend p{margin:8px 0 0;font-weight:400}
+
+ .wheelHint{color:#64748b;font-size:12px;white-space:nowrap}@media(max-width:720px){.wheelHint{display:none}}
+/* 按浏览器可用高度安排电路，100% 缩放无需纵向裁切。 */
+main{max-width:1240px;height:100vh;height:100dvh;min-height:560px;padding:10px 16px;display:grid;grid-template-rows:auto auto minmax(0,1fr) auto auto;gap:8px}
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}h1{font-size:21px;margin:0;white-space:nowrap}header p{font-size:12px;margin:0}
+.toolbar{gap:7px}button,input,select{font-size:14px;padding:6px 9px}input{width:62px}label{font-size:13px}
+.stage{margin:0;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.status{padding:7px 12px;font-size:12px;gap:10px}.viewport{min-height:0;overflow:hidden}
+#circuit{width:100%;height:100%;min-width:0;max-height:100%;display:block}
+.note{padding:8px 12px;min-height:44px;max-height:68px;overflow:auto;font-size:13px;line-height:1.5}
+.legend{margin:0;font-size:12px;line-height:1.5}.legend .key{margin-right:12px}.legend p{display:none}
+details{margin:0;font-size:13px}main:has(details[open]){height:auto;min-height:100dvh}main:has(details[open]) .stage{height:max(400px,calc(100dvh - 180px))}
+@media(max-width:720px){main{height:auto;min-height:100dvh;padding:10px;display:block}header{gap:6px}header p{margin:4px 0 8px}.toolbar{margin-bottom:8px}.stage{display:block}.viewport{overflow-x:auto}#circuit{height:auto;min-width:580px;max-height:none}.note{max-height:none}.legend{margin-top:8px}details{margin-top:6px}}
 </style></head><body><main>
 <header><h1>移位相加乘法器</h1><p id="widthInfo">4 位无符号数相乘 · 独立乘数寄存器 · 9 位组合寄存器：进位 C ＋ 高 4 位 A ＋ 低 4 位 L</p></header>
-<div class="toolbar"><label>位宽 <select id="widthSelect"><option value="4">4 位</option><option value="8" selected>8 位</option></select></label><label>被乘数 <input id="mInput" type="number" min="0" max="255" value="179"></label><span>×</span><label>乘数 <input id="qInput" type="number" min="0" max="255" value="205"></label><button id="reset">重新开始</button><button id="prev">上一步</button><button id="next">下一步</button><button id="play" class="primary">自动播放</button><label>速度 <select id="speed"><option value="1800">慢</option><option value="1200" selected>正常</option><option value="800">快</option></select></label></div>
-<section class="stage"><div class="status"><strong id="stepLabel">初始化</strong><span id="calculation"></span></div><div class="viewport">
-<svg id="circuit" viewBox="0 0 900 790" role="img" aria-labelledby="svgTitle svgDesc"><title id="svgTitle">移位相加乘法器数据通路</title><desc id="svgDesc">乘数最低位控制选择器，选择零或被乘数，与部分积高四位相加。先将进位填入最高位 C，和回写原高四位，再将九位组合整体右移。</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#263f70"/></marker><marker id="orangeArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#f18916"/></marker><marker id="sumArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#147ac2"/></marker><marker id="carryArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d1456b"/></marker><marker id="purpleArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8853bf"/></marker><marker id="mArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#cb760d"/></marker></defs>
+<div class="toolbar"><label>位宽 <select id="widthSelect"><option value="4">4 位</option><option value="8" selected>8 位</option></select></label><label>被乘数 <input id="mInput" type="number" min="0" max="255" value="181"></label><span>×</span><label>乘数 <input id="qInput" type="number" min="0" max="255" value="214"></label><button id="reset">重新开始</button><button id="prev">上一步</button><button id="next">下一步</button><button id="play" class="primary">自动播放</button><label>速度 <select id="speed"><option value="1800">慢</option><option value="1200" selected>正常</option><option value="800">快</option></select></label></div>
+<section class="stage"><div class="status"><strong id="stepLabel">初始化</strong><span class="wheelHint">滚轮 ↑ 上一步 · ↓ 下一步</span><span id="calculation"></span></div><div class="viewport">
+<svg id="circuit" viewBox="40 15 800 755" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="svgTitle svgDesc"><title id="svgTitle">移位相加乘法器数据通路</title><desc id="svgDesc">乘数最低位控制选择器，选择零或被乘数，与部分积高四位相加。先将进位填入最高位 C，和回写原高四位，再将九位组合整体右移。</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#263f70"/></marker><marker id="orangeArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#f18916"/></marker><marker id="sumArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#147ac2"/></marker><marker id="carryArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d1456b"/></marker><marker id="purpleArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8853bf"/></marker><marker id="mArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#cb760d"/></marker></defs>
 <path id="qControl" class="control" d="M730 131H805V484H468" marker-end="url(#purpleArrow)"/><text x="810" y="322" class="small tone-q" transform="rotate(90 810 322)">最低位 q₀ 控制 Mux</text>
 <path id="highWire" class="wire" d="M340 295V324H690V535H520V560" marker-end="url(#sumArrow)"/>
 <path id="mWire" class="wire" d="M375 417V459" marker-end="url(#mArrow)"/>
@@ -44,7 +57,7 @@ svg .tone-c{fill:#b52b50}svg .tone-a{fill:#1268a6}svg .tone-l{fill:#16764f}svg .
 </main><script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id), ns='http://www.w3.org/2000/svg';
-let K=8;const b=(n,k=K)=>n.toString(2).padStart(k,'0');let index=0,timer=null,arrivalTimer=null,states=[],rounds=[],M=179,Q=205;
+let K=8;const b=(n,k=K)=>n.toString(2).padStart(k,'0');let index=0,timer=null,arrivalTimer=null,states=[],rounds=[],M=181,Q=214;
 function build(m,q,k=K){const mask=(1<<k)-1;let p=0,cur=q;const ss=[{phase:'init',round:0,p,q:cur,c:0}],rr=[];
 for(let r=1;r<=k;r++){const bit=cur&1,a=p>>k,l=p&mask,x=bit?m:0,sum=a+x,c=sum>>k,s=sum&mask;
 const base={round:r,p,q:cur,c:0,bit,a,l,x,sum,s};ss.push({...base,phase:'select'});ss.push({...base,phase:'add'});ss.push({...base,phase:'write',p:(s<<k)|l,c});p=((sum<<k)|l)>>1;cur>>=1;ss.push({...base,phase:'shift',p,q:cur,c:0,oldC:c});rr.push({r,bit,a,x,sum,c,s,l,p});}
@@ -91,6 +104,21 @@ function start(){stop();if(index===4*K){index=0;render(false);} $('play').textCo
 function reset(){const m=Number($('mInput').value),q=Number($('qInput').value);if(!Number.isInteger(m)||m<0||m>((1<<K)-1)||!Number.isInteger(q)||q<0||q>((1<<K)-1)){alert(`请输入 0～${(1<<K)-1} 的整数。`);return;}stop();M=m;Q=q;const data=build(M,Q);states=data.ss;rounds=data.rr;index=0;render(false);$('play').textContent='自动播放';}
 $('next').onclick=()=>{stop();step(1)};$('prev').onclick=()=>{stop();step(-1)};$('reset').onclick=reset;$('play').onclick=()=>timer!==null?stop():start();$('speed').onchange=()=>{if(timer!==null)start()};
 document.addEventListener('keydown',e=>{if(['INPUT','SELECT'].includes(e.target.tagName))return;if(e.key==='ArrowRight'){stop();step(1)}if(e.key==='ArrowLeft'){stop();step(-1)}});
+// 一次滚动手势只切换一步；留出时间观看输入、回写和位移动画。
+let wheelLastEvent=-Infinity,wheelLastStep=-Infinity,wheelDirection=0,wheelAmount=0,wheelHandled=false;
+document.addEventListener('wheel',e=>{
+if(e.ctrlKey||e.metaKey||e.shiftKey||!e.deltaY||Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
+if(e.target.closest('input,select,textarea,[contenteditable="true"],details[open],.note'))return;
+e.preventDefault();
+const now=performance.now(),direction=e.deltaY>0?1:-1;
+if(now-wheelLastEvent>180||direction!==wheelDirection){wheelAmount=0;wheelHandled=false;}
+wheelLastEvent=now;wheelDirection=direction;
+if(wheelHandled)return;
+wheelAmount+=Math.abs(e.deltaY)*(e.deltaMode===1?16:e.deltaMode===2?800:1);
+if(wheelAmount<18||now-wheelLastStep<350)return;
+wheelHandled=true;wheelLastStep=now;stop();
+if(index+direction>=0&&index+direction<=4*K)step(direction);
+},{passive:false});
 function configureWidth(){
 K=Number($('widthSelect').value);const pw=630/(2*K+1),aStart=130+pw,aEnd=aStart+K*pw;
 $('widthInfo').textContent=`${K} 位无符号数相乘 · 独立乘数寄存器 · ${2*K+1} 位组合：C ＋ 高 ${K} 位 A ＋ 低 ${K} 位 L`;
@@ -107,7 +135,7 @@ $('svgDesc').textContent=`两路${K}位加数从加法器上方输入；进位�
 $('addEquation').setAttribute('style',`font-family:Consolas,monospace;font-size:${K===8?14:16}px`);
 $('output').setAttribute('x','450');
 $('mInput').max=$('qInput').max=String((1<<K)-1);
-$('mInput').value=K===8?'179':'13';$('qInput').value=K===8?'205':'11';reset();
+$('mInput').value=K===8?'181':'13';$('qInput').value=K===8?'214':'11';reset();
 }
 $('widthSelect').onchange=configureWidth;
 window.multiplierDemo={build,getState:()=>({index,...states[index]}),reset};configureWidth();
